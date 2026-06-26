@@ -45,8 +45,18 @@ jobs:
 
       - name: Deploy no K3s via SSH
         uses: appleboy/ssh-action@v1
+        env:
+          IMAGE: ${{ steps.img.outputs.image }}:${{ github.sha }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_USE_SSL: ${{ secrets.DB_USE_SSL }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          script: /usr/local/bin/deploy-arenagamer.sh ${{ env.APP }} ${{ steps.img.outputs.image }}:${{ github.sha }}
+          envs: IMAGE,DB_HOST,DB_PORT,DB_NAME,DB_USERNAME,DB_PASSWORD,DB_USE_SSL,JWT_SECRET
+          script: /usr/local/bin/deploy-arenagamer.sh ${{ env.APP }} "$IMAGE"
