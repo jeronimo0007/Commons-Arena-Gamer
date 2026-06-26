@@ -1,0 +1,6 @@
+com\arenagamer\api\service\TeamServiceClientLogicTest.class
+com\arenagamer\api\ArenaGamerApplicationTests.class
+com\arenagamer\api\service\SchedulingServiceTest.class
+com\arenagamer\api\service\AvailabilityServiceTest.class
+com\arenagamer\api\service\TournamentEntryFeeServiceTest.class
+com\arenagamer\api\service\TournamentRegistrationConflictTest.class
