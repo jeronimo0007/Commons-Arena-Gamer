@@ -49,4 +49,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          script: deploy-arenagamer.sh ${{ env.APP }} ${{ steps.img.outputs.image }}:${{ github.sha }}
+          script: /usr/local/bin/deploy-arenagamer.sh ${{ env.APP }} ${{ steps.img.outputs.image }}:${{ github.sha }}
